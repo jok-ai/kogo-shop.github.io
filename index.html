@@ -1,148 +1,171 @@
- 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS3 Games</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>PS3 HEN</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0b0f;
-            color: white;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background: linear-gradient(135deg, #111827, #1e3a8a);
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: 0 3px 15px rgba(0,0,0,.5);
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: white;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+header {
+    text-align: center;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #111827, #1d4ed8);
+    box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
 
-        header p {
-            margin: 8px 0 0;
-            color: #cbd5e1;
-        }
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 25px 15px;
-        }
+header p {
+    margin: 10px 0 0;
+    color: #cbd5e1;
+}
 
-        .search {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 25px;
-            border: 1px solid #333;
-            border-radius: 10px;
-            background: #18181b;
-            color: white;
-            font-size: 16px;
-            outline: none;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 15px;
+}
 
-        .search:focus {
-            border-color: #147cff;
-        }
+.search {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #303746;
+    border-radius: 10px;
+    background: #151922;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
 
-        .games {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 18px;
-        }
+.search:focus {
+    border-color: #147cff;
+}
 
-        .game {
-            background: #18181b;
-            border: 1px solid #29292d;
-            border-radius: 14px;
-            padding: 12px;
-            text-align: center;
-            transition: .2s;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
 
-        .game:hover {
-            transform: translateY(-4px);
-            border-color: #147cff;
-        }
+.card {
+    background: #151922;
+    border: 1px solid #293244;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: .25s;
+}
 
-        .icon {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 12px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #147cff, #6d28d9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 55px;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #147cff;
+    box-shadow: 0 8px 25px rgba(0,0,0,.35);
+}
 
-        .game h2 {
-            font-size: 17px;
-            margin: 8px 0;
-        }
+.logo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 58px;
+    background: linear-gradient(135deg, #147cff, #6d28d9);
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+}
 
-        .download {
-            display: block;
-            padding: 10px;
-            background: #147cff;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.card h2 {
+    margin: 10px 0;
+    font-size: 21px;
+}
 
-        .download:hover {
-            background: #075dcc;
-        }
+.card p {
+    color: #aab4c5;
+    line-height: 1.5;
+    min-height: 50px;
+}
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #777;
-        }
+.download {
+    display: block;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 9px;
+    background: #147cff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .2s;
+}
 
-        @media (max-width: 500px) {
-            header h1 {
-                font-size: 24px;
-            }
+.download:hover {
+    background: #075dcc;
+}
 
-            .games {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #687386;
+}
 
-            .icon {
-                width: 105px;
-                height: 105px;
-                font-size: 42px;
-            }
+@media (max-width: 500px) {
 
-            .game h2 {
-                font-size: 14px;
-            }
-        }
-    </style>
+    header h1 {
+        font-size: 26px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        font-size: 42px;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 13px;
+    }
+
+    .download {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🎮 PS3 GAMES</h1>
-    <p>Игры для PlayStation 3</p>
+    <h1>🎮 PS3 HEN</h1>
+    <p>Инструменты и приложения для PlayStation 3</p>
 </header>
 
 <div class="container">
@@ -151,82 +174,161 @@
         class="search"
         type="text"
         id="search"
-        placeholder="🔎 Поиск игры..."
-        onkeyup="searchGames()"
+        placeholder="🔎 Поиск..."
+        onkeyup="searchCards()"
     >
 
-    <div class="games" id="games">
+    <div class="cards" id="cards">
 
-        <div class="game">
-            <div class="icon">🚗</div>
-            <h2>GTA V</h2>
-            <a class="download" href="#">Скачать</a>
+        <!-- PS3 HEN -->
+        <div class="card">
+            <div class="logo">🛠️</div>
+
+            <h2>PS3 HEN</h2>
+
+            <p>
+                Homebrew Enabler для PlayStation 3.
+            </p>
+
+            <a
+                class="download"
+                href="https://www.mediafire.com/file/5zig5op07idjjjy/PS3HEN.p3t/file"
+                target="_blank"
+                rel="noopener"
+            >
+                Скачать HEN
+            </a>
         </div>
 
-        <div class="game">
-            <div class="icon">⛏️</div>
-            <h2>Minecraft</h2>
-            <a class="download" href="#">Скачать</a>
+
+        <!-- webMAN MOD -->
+        <div class="card">
+            <div class="logo">🌐</div>
+
+            <h2>webMAN MOD</h2>
+
+            <p>
+                Менеджер игр и расширение функций PS3.
+            </p>
+
+            <a
+                class="download"
+                href="https://www.mediafire.com/file/ky77bcaq8py8l6j/webMAN_MOD_1.47.37_Installer.pkg/file"
+                target="_blank"
+                rel="noopener"
+            >
+                Скачать webMAN MOD
+            </a>
         </div>
 
-        <div class="game">
-            <div class="icon">⚔️</div>
-            <h2>God of War</h2>
-            <a class="download" href="#">Скачать</a>
+
+        <!-- IrisMAN -->
+        <div class="card">
+            <div class="logo">💿</div>
+
+            <h2>IrisMAN</h2>
+
+            <p>
+                Менеджер игр и файлов для PlayStation 3.
+            </p>
+
+            <a
+                class="download"
+                href="https://www.mediafire.com/file/cgylfx9aj0paozj/IRISMAN_4.85.pkg.699.v4.85_brewology_com.pkg/file"
+                target="_blank"
+                rel="noopener"
+            >
+                Скачать IrisMAN
+            </a>
         </div>
 
-        <div class="game">
-            <div class="icon">🧟</div>
-            <h2>The Last of Us</h2>
-            <a class="download" href="#">Скачать</a>
+
+        <!-- multiMAN -->
+        <div class="card">
+            <div class="logo">📀</div>
+
+            <h2>multiMAN</h2>
+
+            <p>
+                Популярный менеджер игр и файлов для PS3.
+            </p>
+
+            <a class="download" href="#">
+                Скоро
+            </a>
         </div>
 
-        <div class="game">
-            <div class="icon">🏎️</div>
-            <h2>Gran Turismo 6</h2>
-            <a class="download" href="#">Скачать</a>
+
+        <!-- ManaGunZ -->
+        <div class="card">
+            <div class="logo">🎮</div>
+
+            <h2>ManaGunZ</h2>
+
+            <p>
+                Менеджер игр для PlayStation 3.
+            </p>
+
+            <a class="download" href="#">
+                Скоро
+            </a>
         </div>
 
-        <div class="game">
-            <div class="icon">🦇</div>
-            <h2>Batman Arkham City</h2>
-            <a class="download" href="#">Скачать</a>
-        </div>
 
-        <div class="game">
-            <div class="icon">🔫</div>
-            <h2>Call of Duty</h2>
-            <a class="download" href="#">Скачать</a>
-        </div>
+        <!-- PS3 Tools -->
+        <div class="card">
+            <div class="logo">🔧</div>
 
-        <div class="game">
-            <div class="icon">🏎️</div>
-            <h2>Need for Speed</h2>
-            <a class="download" href="#">Скачать</a>
+            <h2>PS3 Tools</h2>
+
+            <p>
+                Полезные инструменты для владельцев PS3.
+            </p>
+
+            <a class="download" href="#">
+                Скоро
+            </a>
         </div>
 
     </div>
+
 </div>
 
 <footer>
-    PS3 Games © 2026
+    PS3 HEN Tools © 2026
 </footer>
 
 <script>
-function searchGames() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let games = document.querySelectorAll(".game");
 
-    games.forEach(function(game) {
-        let name = game.querySelector("h2").textContent.toLowerCase();
+function searchCards() {
+
+    let input =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+
+        let name =
+            card
+            .querySelector("h2")
+            .textContent
+            .toLowerCase();
 
         if (name.includes(input)) {
-            game.style.display = "";
+            card.style.display = "";
         } else {
-            game.style.display = "none";
+            card.style.display = "none";
         }
+
     });
+
 }
+
 </script>
 
 </body>
