@@ -1,161 +1,229 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PS3 HEN</title>
+<title>Kogo Shop — PS3 Mods</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #080b12;
-    color: white;
+body{
+    min-height:100vh
 }
 
-header {
-    text-align: center;
-    padding: 30px 15px;
-    background: linear-gradient(135deg, #111827, #1d4ed8);
-    box-shadow: 0 4px 20px rgba(0,0,0,.4);
+header{
+    text-align:center;
+    padding:28px 15px 22px;
+    border-bottom:1px solid #151515
 }
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
+.logo{
+    margin:0;
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    font-size:clamp(42px,8vw,70px);
+    font-weight:700;
+    letter-spacing:4px
 }
 
-header p {
-    margin: 10px 0 0;
-    color: #cbd5e1;
+.subtitle{
+    margin:8px 0 15px;
+    color:#777;
+    font-size:13px;
+    letter-spacing:2px
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 30px 15px;
+.languages{
+    display:flex;
+    justify-content:center;
+    gap:6px
 }
 
-.search {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 25px;
-    border: 1px solid #303746;
-    border-radius: 10px;
-    background: #151922;
-    color: white;
-    font-size: 16px;
-    outline: none;
+.lang{
+    padding:7px 12px;
+    border:1px solid #292929;
+    background:#070707;
+    color:#aaa;
+    border-radius:5px;
+    cursor:pointer
 }
 
-.search:focus {
-    border-color: #147cff;
+.lang.active{
+    color:#fff;
+    border-color:#666;
+    background:#111
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+nav{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:13px 10px;
+    border-bottom:1px solid #151515
 }
 
-.card {
-    background: #151922;
-    border: 1px solid #293244;
-    border-radius: 16px;
-    padding: 20px;
-    text-align: center;
-    transition: .25s;
+nav button{
+    padding:10px 17px;
+    border-radius:6px;
+    border:1px solid #292929;
+    background:#070707;
+    color:#ddd;
+    font-size:14px;
+    cursor:pointer
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #147cff;
-    box-shadow: 0 8px 25px rgba(0,0,0,.35);
+nav button.active{
+    background:#111;
+    border-color:#555;
+    color:#fff
 }
 
-.logo {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 15px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 58px;
-    background: linear-gradient(135deg, #147cff, #6d28d9);
-    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+main{
+    width:94%;
+    max-width:1150px;
+    margin:auto;
+    padding:30px 0 50px
 }
 
-.card h2 {
-    margin: 10px 0;
-    font-size: 21px;
+.section-title{
+    margin:0 0 10px;
+    font-size:31px;
+    font-weight:500
 }
 
-.card p {
-    color: #aab4c5;
-    line-height: 1.5;
-    min-height: 50px;
+.section-sub{
+    color:#666;
+    margin:0 0 24px;
+    font-size:14px
 }
 
-.download {
-    display: block;
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 9px;
-    background: #147cff;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: .2s;
+.group-title{
+    margin:35px 0 18px;
+    font-size:22px;
+    font-weight:500;
+    border-bottom:1px solid #191919;
+    padding-bottom:10px
 }
 
-.download:hover {
-    background: #075dcc;
+.programs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+    gap:20px
 }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #687386;
+.card{
+    overflow:hidden;
+    background:#080808;
+    border:1px solid #222;
+    border-radius:10px;
+    transition:.2s
 }
 
-@media (max-width: 500px) {
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#555
+}
 
-    header h1 {
-        font-size: 26px;
+.cover{
+    height:155px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    overflow:hidden;
+    border-bottom:1px solid #222
+}
+
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block
+}
+
+.simple-icon{
+    height:155px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#050505;
+    font-size:55px
+}
+
+.card-content{
+    padding:15px
+}
+
+.badge{
+    height:18px;
+    text-align:center;
+    color:#666;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px
+}
+
+.card-content h3{
+    margin:3px 0 0;
+    text-align:center;
+    color:#fff;
+    font-size:20px;
+    font-weight:500
+}
+
+.download{
+    display:block;
+    width:100%;
+    margin-top:14px;
+    padding:11px;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    background:#111;
+    border:1px solid #333;
+    border-radius:6px;
+    font-size:14px
+}
+
+.download:hover{
+    background:#1c1c1c;
+    border-color:#666
+}
+
+footer{
+    padding:25px 15px;
+    text-align:center;
+    color:#555;
+    font-size:13px;
+    border-top:1px solid #151515
+}
+
+.hidden{
+    display:none
+}
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:43px
     }
 
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    nav button{
+        padding:9px 12px;
+        font-size:13px
     }
 
-    .card {
-        padding: 12px;
-    }
-
-    .logo {
-        width: 100px;
-        height: 100px;
-        font-size: 42px;
-    }
-
-    .card h2 {
-        font-size: 16px;
-    }
-
-    .card p {
-        font-size: 13px;
-    }
-
-    .download {
-        font-size: 14px;
-        padding: 10px;
+    .programs{
+        grid-template-columns:1fr
     }
 }
 </style>
@@ -164,172 +232,389 @@ footer {
 <body>
 
 <header>
-    <h1>🎮 PS3 HEN</h1>
-    <p>Инструменты и приложения для PlayStation 3</p>
+
+    <h1 class="logo">Kogo Shop</h1>
+
+    <div class="subtitle" id="subtitle">
+        EVERYTHING YOU NEED FOR PS3
+    </div>
+
+    <div class="languages">
+        <button class="lang active" data-lang="en">EN</button>
+        <button class="lang" data-lang="ru">RU</button>
+        <button class="lang" data-lang="uk">UA</button>
+    </div>
+
 </header>
 
-<div class="container">
 
-    <input
-        class="search"
-        type="text"
-        id="search"
-        placeholder="🔎 Поиск..."
-        onkeyup="searchCards()"
-    >
+<nav>
 
-    <div class="cards" id="cards">
+    <button class="active">
+        ⌂
+        <span data-en="Home"
+              data-ru="Главная"
+              data-uk="Головна">Home</span>
+    </button>
+
+    <button>
+        ▦
+        <span data-en="Programs"
+              data-ru="Программы"
+              data-uk="Програми">Programs</span>
+    </button>
+
+    <button>
+        🎮
+        <span data-en="Games"
+              data-ru="Игры"
+              data-uk="Ігри">Games</span>
+    </button>
+
+    <button>
+        ⚙
+        <span>HFW-HEN</span>
+    </button>
+
+    <button>
+        🔧
+        <span data-en="Utilities"
+              data-ru="Утилиты"
+              data-uk="Утиліти">Utilities</span>
+    </button>
+
+    <button>
+        ⓘ
+        <span data-en="About"
+              data-ru="О сайте"
+              data-uk="Про сайт">About</span>
+    </button>
+
+</nav>
+
+
+<main>
+
+    <h2 class="section-title" id="title">
+        RUS / ENG Mods
+    </h2>
+
+    <p class="section-sub" id="desc">
+        Separate Russian and English versions for PS3.
+    </p>
+
+
+    <h3 class="group-title" id="rusTitle">
+        🇷🇺 Russian Mods
+    </h3>
+
+
+    <div class="programs">
+
 
         <!-- PS3 HEN -->
-        <div class="card">
-            <div class="logo">🛠️</div>
 
-            <h2>PS3 HEN</h2>
+        <article class="card">
 
-            <p>
-                Homebrew Enabler для PlayStation 3.
-            </p>
+            <div class="simple-icon">
+                🛠️
+            </div>
 
-            <a
-                class="download"
-                href="https://www.mediafire.com/file/5zig5op07idjjjy/PS3HEN.p3t/file"
-                target="_blank"
-                rel="noopener"
-            >
-                Скачать HEN
-            </a>
-        </div>
+            <div class="card-content">
 
+                <div class="badge">
+                    PS3 HEN
+                </div>
 
-        <!-- webMAN MOD -->
-        <div class="card">
-            <div class="logo">🌐</div>
+                <h3>
+                    PS3 HEN
+                </h3>
 
-            <h2>webMAN MOD</h2>
+                <a
+                    class="download"
+                    href="https://www.mediafire.com/file/5zig5op07idjjjy/PS3HEN.p3t/file"
+                    target="_blank"
+                    rel="noopener">
 
-            <p>
-                Менеджер игр и расширение функций PS3.
-            </p>
+                    <span
+                        data-en="Download PS3 HEN"
+                        data-ru="Скачать PS3 HEN"
+                        data-uk="Завантажити PS3 HEN">
+                        Download PS3 HEN
+                    </span>
 
-            <a
-                class="download"
-                href="https://www.mediafire.com/file/ky77bcaq8py8l6j/webMAN_MOD_1.47.37_Installer.pkg/file"
-                target="_blank"
-                rel="noopener"
-            >
-                Скачать webMAN MOD
-            </a>
-        </div>
+                </a>
+
+            </div>
+
+        </article>
 
 
         <!-- IrisMAN -->
-        <div class="card">
-            <div class="logo">💿</div>
 
-            <h2>IrisMAN</h2>
+        <article class="card">
 
-            <p>
-                Менеджер игр и файлов для PlayStation 3.
-            </p>
+            <div class="simple-icon">
+                💿
+            </div>
 
-            <a
-                class="download"
-                href="https://www.mediafire.com/file/cgylfx9aj0paozj/IRISMAN_4.85.pkg.699.v4.85_brewology_com.pkg/file"
-                target="_blank"
-                rel="noopener"
-            >
-                Скачать IrisMAN
-            </a>
-        </div>
+            <div class="card-content">
+
+                <div class="badge">
+                    MANAGER
+                </div>
+
+                <h3>
+                    IrisMAN
+                </h3>
+
+                <a
+                    class="download"
+                    href="https://www.mediafire.com/file/cgylfx9aj0paozj/IRISMAN_4.85.pkg.699.v4.85_brewology_com.pkg/file"
+                    target="_blank"
+                    rel="noopener">
+
+                    <span
+                        data-en="Download IrisMAN"
+                        data-ru="Скачать IrisMAN"
+                        data-uk="Завантажити IrisMAN">
+                        Download IrisMAN
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- webMAN MOD -->
+
+        <article class="card">
+
+            <div class="simple-icon">
+                🌐
+            </div>
+
+            <div class="card-content">
+
+                <div class="badge">
+                    MANAGER
+                </div>
+
+                <h3>
+                    webMAN MOD
+                </h3>
+
+                <a
+                    class="download"
+                    href="https://www.mediafire.com/file/ky77bcaq8py8l6j/webMAN_MOD_1.47.37_Installer.pkg/file"
+                    target="_blank"
+                    rel="noopener">
+
+                    <span
+                        data-en="Download webMAN MOD"
+                        data-ru="Скачать webMAN MOD"
+                        data-uk="Завантажити webMAN MOD">
+                        Download webMAN MOD
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
 
 
         <!-- multiMAN -->
-        <div class="card">
-            <div class="logo">📀</div>
 
-            <h2>multiMAN</h2>
+        <article class="card">
 
-            <p>
-                Популярный менеджер игр и файлов для PS3.
-            </p>
+            <div class="simple-icon">
+                📀
+            </div>
 
-            <a class="download" href="#">
-                Скоро
-            </a>
-        </div>
+            <div class="card-content">
+
+                <div class="badge">
+                    MANAGER
+                </div>
+
+                <h3>
+                    multiMAN
+                </h3>
+
+                <a class="download" href="#">
+
+                    <span
+                        data-en="Coming soon"
+                        data-ru="Скоро"
+                        data-uk="Незабаром">
+                        Coming soon
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
 
 
         <!-- ManaGunZ -->
-        <div class="card">
-            <div class="logo">🎮</div>
 
-            <h2>ManaGunZ</h2>
+        <article class="card">
 
-            <p>
-                Менеджер игр для PlayStation 3.
-            </p>
+            <div class="simple-icon">
+                🎮
+            </div>
 
-            <a class="download" href="#">
-                Скоро
-            </a>
-        </div>
+            <div class="card-content">
+
+                <div class="badge">
+                    MANAGER
+                </div>
+
+                <h3>
+                    ManaGunZ
+                </h3>
+
+                <a class="download" href="#">
+
+                    <span
+                        data-en="Coming soon"
+                        data-ru="Скоро"
+                        data-uk="Незабаром">
+                        Coming soon
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
 
 
         <!-- PS3 Tools -->
-        <div class="card">
-            <div class="logo">🔧</div>
 
-            <h2>PS3 Tools</h2>
+        <article class="card">
 
-            <p>
-                Полезные инструменты для владельцев PS3.
-            </p>
+            <div class="simple-icon">
+                🔧
+            </div>
 
-            <a class="download" href="#">
-                Скоро
-            </a>
-        </div>
+            <div class="card-content">
+
+                <div class="badge">
+                    TOOLS
+                </div>
+
+                <h3>
+                    PS3 Tools
+                </h3>
+
+                <a class="download" href="#">
+
+                    <span
+                        data-en="Coming soon"
+                        data-ru="Скоро"
+                        data-uk="Незабаром">
+                        Coming soon
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
 
     </div>
 
-</div>
+</main>
+
 
 <footer>
-    PS3 HEN Tools © 2026
+    Kogo Shop © 2026
 </footer>
+
 
 <script>
 
-function searchCards() {
+const languages = document.querySelectorAll(".lang");
 
-    let input =
-        document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+languages.forEach(function(button){
 
-    let cards =
-        document.querySelectorAll(".card");
+    button.addEventListener("click", function(){
 
-    cards.forEach(function(card) {
+        languages.forEach(function(btn){
+            btn.classList.remove("active");
+        });
 
-        let name =
-            card
-            .querySelector("h2")
-            .textContent
-            .toLowerCase();
+        button.classList.add("active");
 
-        if (name.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
+        const lang = button.dataset.lang;
+
+        document.querySelectorAll("[data-en]").forEach(function(element){
+
+            if(element.dataset[lang]){
+                element.textContent = element.dataset[lang];
+            }
+
+        });
+
+        if(lang === "en"){
+
+            document.getElementById("subtitle").textContent =
+                "EVERYTHING YOU NEED FOR PS3";
+
+            document.getElementById("title").textContent =
+                "RUS / ENG Mods";
+
+            document.getElementById("desc").textContent =
+                "Separate Russian and English versions for PS3.";
+
+            document.getElementById("rusTitle").textContent =
+                "🇷🇺 Russian Mods";
+
+        }
+
+        if(lang === "ru"){
+
+            document.getElementById("subtitle").textContent =
+                "ВСЁ НЕОБХОДИМОЕ ДЛЯ PS3";
+
+            document.getElementById("title").textContent =
+                "RUS / ENG Моды";
+
+            document.getElementById("desc").textContent =
+                "Русские и английские версии для PS3.";
+
+            document.getElementById("rusTitle").textContent =
+                "🇷🇺 Русские моды";
+
+        }
+
+        if(lang === "uk"){
+
+            document.getElementById("subtitle").textContent =
+                "ВСЕ НЕОБХІДНЕ ДЛЯ PS3";
+
+            document.getElementById("title").textContent =
+                "RUS / ENG Моди";
+
+            document.getElementById("desc").textContent =
+                "Російські та англійські версії для PS3.";
+
+            document.getElementById("rusTitle").textContent =
+                "🇺🇦 Українські моди";
+
         }
 
     });
 
-}
+});
 
 </script>
 
 </body>
-</html>
+</html>   
